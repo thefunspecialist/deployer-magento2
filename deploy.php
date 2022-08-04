@@ -90,7 +90,11 @@ task('deploy:magento', [
     'magento:upgrade:db',
     'magento:deploy:assets',
     'magento:compile',
+    'magento:cache:set:app',
+    'magento:cache:set:hosts',
+    'magento:syslogging:enable',
     'magento:cache:flush',
+    'magento:cron:install',
     'magento:setup:permissions'
 ]);
 

@@ -61,3 +61,28 @@ task('magento:setup:permissions', function () {
     run("cd {{release_path}}{{magento_dir}} && chmod -R 775 pub/static");
     run("cd {{release_path}}{{magento_dir}} && chmod +x {{magento_bin}}");
 });
+
+desc('Reindex index');
+task('magento:reindex:index', function () {
+    run("bin/magento index:reindex");
+});
+
+desc('Set caching app 2');
+task('magento:cache:set:app', function () {
+    run("bin/magento config:set system/full_page_cache/caching_application 2");
+});
+
+desc('Magento config set cache hosts');
+task('magento:cache:set:hosts', function () {
+    run("bin/magento setup:config:set --http-cache-hosts=127.0.0.1:6081");
+});
+
+desc('Enable syslogging');
+task('magento:syslogging:enable', function () {
+    run("bin/magento setup:config:set --enable-syslog-logging=true");
+});
+
+desc('Install magento cron');
+task('magento:cron:install', function () {
+    run("bin/magento cron:install --force'");
+});
