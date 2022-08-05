@@ -88,6 +88,8 @@ task('deploy:magento', [
     'magento:clean:generated',
     'magento:deploy:mode:set',
     'magento:upgrade:db',
+    'copy:betterorder:view',
+    'copy:betterorder:view',
     'magento:deploy:assets',
     'magento:compile',
     'magento:cache:set:app',

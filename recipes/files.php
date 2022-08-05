@@ -84,5 +84,15 @@ task('magento:syslogging:enable', function () {
 
 desc('Install magento cron');
 task('magento:cron:install', function () {
-    run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} cron:install --force'");
+    run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} cron:install --force");
+});
+
+desc('Copy Quick Order View Edit');
+task('copy:quickorder:view', function () {
+    run("cd {{release_path}}{{magento_dir}} && cp overrides/QuickOrderViewEdit/order_view.html vendor/mirasvit/module-order-management/src/QuickView/view/adminhtml/web/template/component/order_view.html");
+});
+
+desc('Copy Better Order Comments View Edit');
+task('copy:betterorder:view', function () {
+    run("cd {{release_path}}{{magento_dir}} && cp overrides/BetterOrderComments/form-content.html vendor/boldcommerce/magento2-ordercomments/view/frontend/web/template/checkout/form-content.html");
 });
