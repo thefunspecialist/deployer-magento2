@@ -84,7 +84,7 @@ task('magento:syslogging:enable', function () {
 
 desc('Install magento cron');
 task('magento:cron:install', function () {
-    run("cd {{deploy_path}}{magento_dir}} && {{php}} {{magento_bin}} cron:install --force");
+    run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} cron:install --force");
 });
 
 desc('Remove magento cron');
