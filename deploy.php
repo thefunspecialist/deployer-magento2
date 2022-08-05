@@ -92,6 +92,7 @@ task('deploy:magento', [
     'magento:copy:betterorder:view',
     'magento:deploy:assets',
     'magento:compile',
+    'magento:cron:remove',
     'magento:cache:set:app',
     'magento:cache:set:hosts',
     'magento:syslogging:enable',
@@ -119,6 +120,7 @@ task('deploy', [
     'success'
 ]);
 
+after('deploy:failed', 'deploy:unlock');
 after('deploy:failed', 'deploy:unlock');
 // after('deploy:failed', 'magento:maintenance:disable');
 
