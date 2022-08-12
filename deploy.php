@@ -92,7 +92,6 @@ task('deploy:magento', [
     'magento:copy:betterorder:view',
     'magento:deploy:assets',
     'magento:compile',
-    'magento:cron:remove',
     'magento:cache:set:app',
     'magento:cache:set:hosts',
     'magento:syslogging:enable',
