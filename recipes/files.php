@@ -22,6 +22,13 @@ task('magento:deploy:assets', function () {
     }
 });
 
+desc('Bundle assets');
+task('magento:deploy:bundling', function () {
+    $host = get('hostname');
+    run("cd {{release_path}}{{magento_dir}} && magepack generate --cms-url=\"{{host}}\" --category-url=\"{{host}}/research-chemicals.html\" --product-url=\"{{host}}/4fma-poeder.html\" ");
+    run("cd {{release_path}}{{magento_dir}} && magepack bundle -m -s");
+});
+
 desc('Enable maintenance mode');
 task('magento:maintenance:enable', function () {
     run("if [ -d $(echo {{release_path}}{{magento_dir}}bin) ]; then cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} maintenance:enable {{verbose}}; fi");
