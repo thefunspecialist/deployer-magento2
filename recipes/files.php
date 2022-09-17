@@ -24,12 +24,16 @@ task('magento:deploy:assets', function () {
 
 desc('Bundle assets');
 task('magento:deploy:bundling', function () {
-    $host = get('host');
-    run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/enable_js_bundling 0");
-    run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/minify_files 0");
-    //run("cd {{release_path}}{{magento_dir}} && magepack generate --cms-url=\"{{host}}\" --category-url=\"{{host}}/research-chemicals.html\" --product-url=\"{{host}}/4fma-poeder.html\" ");
-    run("cd {{release_path}}{{magento_dir}} && magepack bundle -m -s");
-    run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/minify_files 0");
+    if (get('bundle')){
+        run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/enable_js_bundling 0");
+        run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/minify_files 0");
+        run("cd {{release_path}}{{magento_dir}} && magepack bundle -m -s");
+        run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/enable_magepack_js_bundling 1");
+    } else {
+        run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/minify_files 1");
+        run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/enable_magepack_js_bundling 0");
+    }
+
 });
 
 desc('Enable maintenance mode');
