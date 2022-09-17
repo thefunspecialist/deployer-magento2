@@ -28,7 +28,6 @@ task('magento:deploy:bundling', function () {
         run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/enable_js_bundling 0");
         run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/minify_files 0");
         run("cd {{release_path}}{{magento_dir}} && magepack bundle -m -s");
-        run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/enable_magepack_js_bundling 1");
     } else {
         run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/minify_files 1");
         run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/enable_magepack_js_bundling 0");
