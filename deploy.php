@@ -88,6 +88,7 @@ task('deploy:magento', [
     'magento:config',
     'magento:clean:generated',
     'magento:deploy:mode:set',
+    'magento:deploy:bundling:disable',
     'magento:upgrade:db',
     'magento:copy:quickorder:view',
     'magento:copy:betterorder:view',
