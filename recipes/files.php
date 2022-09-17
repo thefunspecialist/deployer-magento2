@@ -23,6 +23,13 @@ task('magento:deploy:assets', function () {
 });
 
 desc('Bundle assets');
+task('magento:deploy:bundling:disable', function () {
+    if (!get('bundle')){
+        run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} module:disable MageSuite_Magepack");
+    }
+});
+
+desc('Bundle assets');
 task('magento:deploy:bundling', function () {
     if (get('bundle')){
         run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/enable_js_bundling 0");
@@ -30,7 +37,6 @@ task('magento:deploy:bundling', function () {
         run("cd {{release_path}}{{magento_dir}} && magepack bundle -m -s");
     } else {
         run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/minify_files 1");
-        run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/enable_magepack_js_bundling 0");
     }
 
 });
