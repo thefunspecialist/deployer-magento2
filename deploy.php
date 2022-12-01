@@ -116,7 +116,7 @@ task('deploy', [
     // 'deploy:writable',
     'deploy:magento',
     'deploy:symlink',
-    'systemctl:restart',
+    'opcache:flush',
     'deploy:unlock',
     // 'deploy:previous', // Use in case you need put the previous release in maintenance
     'cleanup',
