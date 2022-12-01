@@ -14,6 +14,11 @@ task('opcache:flush', function () {
     run("{{php}} -r 'opcache_reset();'");
 });
 
+desc('Restart php-fpm, varnish and nginx');
+task('systemctl:restart', function () {
+    run("sudo systemctl restart php7.4-fpm varnish nginx");
+});
+
 desc('Update the code via Git');
 task('git:update_code', function () {
     run("cd {{release_path}}{{magento_dir}} && \
