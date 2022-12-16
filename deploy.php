@@ -21,6 +21,7 @@ set('magerun', '/usr/local/bin/n98-magerun2');
 set('composer', '/usr/local/bin/composer');
 set('keep_releases', 3);
 set('bundle', 0);
+set('syslog', 1);
 // set('default_timeout', 360);
 set('verbose', '--quiet'); // Use --quite or -v or -vvv
 set('magerun_params', '--skip-root-check --root-dir={{release_path}}');

@@ -99,7 +99,11 @@ task('magento:cache:set:hosts', function () {
 
 desc('Enable syslogging');
 task('magento:syslogging:enable', function () {
-    run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} setup:config:set --enable-syslog-logging=true");
+    if (get('syslog')) {
+        run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} setup:config:set --enable-syslog-logging=true");
+    } else {
+        run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} setup:config:set --enable-syslog-logging=false");
+    }
 });
 
 desc('Install magento cron');
