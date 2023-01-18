@@ -125,3 +125,9 @@ desc('Copy Better Order Comments View Edit');
 task('magento:copy:betterorder:view', function () {
     run("cd {{release_path}}{{magento_dir}} && cp overrides/BetterOrderComments/form-content.html vendor/boldcommerce/magento2-ordercomments/view/frontend/web/template/checkout/form-content.html");
 });
+
+desc('Copy composer fixes');
+task('magento:copy:composer_fix', function () {
+    run("cd {{release_path}}{{magento_dir}} && cp overrides/vendor/Composer/CompositeRepository.php vendor/composer/src/Composer/Repository/CompositeRepository.php");
+    run("cd {{release_path}}{{magento_dir}} && cp overrides/vendor/Composer/ArrayRepository.php vendor/composer/src/Composer/Repository/ArrayRepository.php");
+});

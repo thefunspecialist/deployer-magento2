@@ -113,6 +113,7 @@ task('deploy', [
     'deploy:update_code',
     'deploy:shared',
     'deploy:vendors',
+    'magento:copy:composer_fix',
     'deploy:clear_paths',
     // 'deploy:writable',
     'deploy:magento',
