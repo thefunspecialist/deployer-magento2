@@ -133,6 +133,11 @@ task('magento:copy:betterorder:view', function () {
 
 desc('Copy composer fixes');
 task('magento:copy:composer_fix', function () {
-    run("cd {{release_path}}{{magento_dir}} && cp overrides/vendor/Composer/CompositeRepository.php vendor/composer/composer/src/Composer/Repository/CompositeRepository.php");
-    run("cd {{release_path}}{{magento_dir}} && cp overrides/vendor/Composer/ArrayRepository.php vendor/composer/composer/src/Composer/Repository/ArrayRepository.php");
+    if(get('composer_fix')){
+        run("cd {{release_path}}{{magento_dir}} && cp overrides/vendor/Composer/CompositeRepository.php vendor/composer/composer/src/Composer/Repository/CompositeRepository.php");
+        run("cd {{release_path}}{{magento_dir}} && cp overrides/vendor/Composer/ArrayRepository.php vendor/composer/composer/src/Composer/Repository/ArrayRepository.php");
+    } else {
+        write('Skipped copying composer fix files')
+    }
+   
 });

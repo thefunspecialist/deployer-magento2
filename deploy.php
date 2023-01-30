@@ -24,6 +24,7 @@ set('bundle', 0);
 set('syslog', 1);
 set('remove_cron', 1);
 set('restart_systemd', 1);
+set('composer_fix', 1);
 // set('default_timeout', 360);
 set('verbose', '--quiet'); // Use --quite or -v or -vvv
 set('magerun_params', '--skip-root-check --root-dir={{release_path}}');
