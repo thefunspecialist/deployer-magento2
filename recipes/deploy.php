@@ -9,3 +9,11 @@ task('deploy:previous', function () {
         run("{{php}} {{deploy_path}}/releases/{$releases[1]}{{magento_dir}}{{magento_bin}} maintenance:enable {{verbose}}");
     }
 });
+
+desc('Restart nginx, varnish, php7.4-fpm');
+task('deploy:restart:systemd', function () {
+    if (get('restart_systemd')) {
+        run("systemctl restart nginx varnish php7.4-fpm");
+    }
+});
+

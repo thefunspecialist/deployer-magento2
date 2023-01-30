@@ -22,6 +22,8 @@ set('composer', '/usr/local/bin/composer');
 set('keep_releases', 3);
 set('bundle', 0);
 set('syslog', 1);
+set('remove_cron', 1);
+set('restart_systemd', 1);
 // set('default_timeout', 360);
 set('verbose', '--quiet'); // Use --quite or -v or -vvv
 set('magerun_params', '--skip-root-check --root-dir={{release_path}}');
@@ -100,6 +102,7 @@ task('deploy:magento', [
     'magento:cache:set:hosts',
     'magento:syslogging:enable',
     'magento:cache:flush',
+    'magento:cron:remove',
     'magento:cron:install',
     'magento:setup:permissions'
 ]);
@@ -122,6 +125,7 @@ task('deploy', [
     'deploy:unlock',
     // 'deploy:previous', // Use in case you need put the previous release in maintenance
     'cleanup',
+    'deploy:restart:systemd',
     'success'
 ]);
 

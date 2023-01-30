@@ -113,7 +113,9 @@ task('magento:cron:install', function () {
 
 desc('Remove magento cron');
 task('magento:cron:remove', function () {
-    run("cd {{deploy_path}}/current && {{php}} {{magento_bin}} cron:remove");
+    if(get('remove_cron')){
+        run("cd {{deploy_path}}/current && {{php}} {{magento_bin}} cron:remove");
+    }
 });
 
 desc('Copy Quick Order View Edit');
