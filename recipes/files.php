@@ -26,6 +26,8 @@ desc('Bundle assets');
 task('magento:deploy:bundling:disable', function () {
     if (!get('bundle')){
         run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} module:disable MageSuite_Magepack");
+    } else {
+        write("Bundling is enabled");
     }
 });
 
@@ -37,6 +39,7 @@ task('magento:deploy:bundling', function () {
         run("cd {{release_path}}{{magento_dir}} && magepack bundle -m -s");
     } else {
         run("cd {{release_path}}{{magento_dir}} && {{php}} {{magento_bin}} config:set dev/js/minify_files 1");
+        write("Bundling is disabled");
     }
 
 });

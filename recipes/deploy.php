@@ -14,6 +14,8 @@ desc('Restart nginx, varnish, php7.4-fpm');
 task('deploy:restart:systemd', function () {
     if (get('restart_systemd')) {
         run("systemctl restart nginx varnish php7.4-fpm");
+    } else {
+        write("Not restarting systemd services");
     }
 });
 
