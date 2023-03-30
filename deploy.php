@@ -96,6 +96,8 @@ task('deploy:magento', [
     'magento:upgrade:db',
     'magento:copy:quickorder:view',
     'magento:copy:betterorder:view',
+    'magento:copy:invoice-email:view',
+    'magento:copy:shipping-email:view',
     'magento:deploy:assets',
     'magento:compile',
     'magento:deploy:bundling',

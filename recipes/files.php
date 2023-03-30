@@ -141,3 +141,13 @@ task('magento:copy:composer_fix', function () {
     }
    
 });
+
+desc('Copy Quick Order View Edit');
+task('magento:copy:invoice-email:view', function () {
+    run("cd {{release_path}}{{magento_dir}} && cp overrides/AutoInvoiceEmail/templates/order/invoice/create/items.phtml vendor/magento/module-sales/view/adminhtml/templates/order/invoice/create/items.phtml");
+});
+
+desc('Copy Better Order Comments View Edit');
+task('magento:copy:shipping-email:view', function () {
+    run("cd {{release_path}}{{magento_dir}} && cp overrides/AutoShipmentEmail/templates/create/items.phtml vendor/magento/module-shipping/view/adminhtml/templates/create/items.phtml");
+});
