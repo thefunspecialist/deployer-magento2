@@ -127,8 +127,8 @@ task('deploy', [
     'opcache:flush',
     'deploy:unlock',
     // 'deploy:previous', // Use in case you need put the previous release in maintenance
-    'cleanup',
     'deploy:restart:systemd',
+    'cleanup',
     'success'
 ]);
 
