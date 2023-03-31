@@ -13,7 +13,7 @@ task('deploy:previous', function () {
 desc('Restart nginx, varnish, php7.4-fpm');
 task('deploy:restart:systemd', function () {
     if (get('restart_systemd')) {
-        run("sudo systemctl restart nginx varnish php7.4-fpm");
+        run("sudo systemctl restart nginx varnish php8.1-fpm");
     } else {
         write("Not restarting systemd services");
     }
